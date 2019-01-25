@@ -7,27 +7,11 @@ const debug = Debug('multiparty-express');
 
 declare namespace multipartyExpress {
   // Fixed File interface from multiparty [wh]
-  interface File {
+  interface File extends multiparty.File {
     /**
-     * same as name - the field name for this file
-     */
-    fieldName: string;
-    /**
-     * the filename that the user reports for the file
+     * FIXED: the filename that the user reports for the file
      */
     originalFilename: string;
-    /**
-     * the absolute path of the uploaded file on disk
-     */
-    path: string;
-    /**
-     * the HTTP headers that were sent along with this file
-     */
-    headers: unknown;
-    /**
-     * size of the file in bytes
-     */
-    size: number;
   }
 
   interface Files {

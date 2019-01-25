@@ -11,7 +11,7 @@ import * as request from 'supertest';
 import * as uniqid from 'uniqid';
 const errorHandler = require('@elunic/express-error-handler');
 
-import { cleanup, multipartyExpress } from '../src/multipartyExpress';
+import { cleanup, multipartyExpress } from '../src/index';
 
 describe('multiparser', () => {
   let app: Express;

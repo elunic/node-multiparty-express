@@ -7,11 +7,27 @@ const debug = Debug('multiparty-express');
 
 declare namespace multipartyExpress {
   // Fixed File interface from multiparty [wh]
-  interface File extends multiparty.File {
+  interface File {
     /**
-     * FIXED: the filename that the user reports for the file
+     * same as name - the field name for this file
+     */
+    fieldName: string;
+    /**
+     * the filename that the user reports for the file
      */
     originalFilename: string;
+    /**
+     * the absolute path of the uploaded file on disk
+     */
+    path: string;
+    /**
+     * the HTTP headers that were sent along with this file
+     */
+    headers: unknown;
+    /**
+     * size of the file in bytes
+     */
+    size: number;
   }
 
   interface Files {
@@ -33,8 +49,7 @@ declare global {
   }
 }
 
-export default multipartyExpress;
-export function multipartyExpress() {
+function multipartyExpress() {
   return function multipartyExpress(req: Request, res: Response, next: NextFunction) {
     try {
       new multiparty.Form().parse(req, (err, fields, files) => {
@@ -51,6 +66,8 @@ export function multipartyExpress() {
     }
   };
 }
+export { multipartyExpress };
+export default multipartyExpress;
 
 export async function cleanup(req: Request) {
   if (req.files) {

@@ -6,10 +6,14 @@ An express middleware for `multiparty`, with TypeScript typings.
 
 ## Usage
 
+**Note**: if you get errors about incompatible definitions of `Express.Request.files`, enable the `skipLibCheck` TypeScript compiler option.
+
 * It is recommened to only include the middleware on routes that actually require it.
 * On routes that have included the middleware, `req.fields` and `req.files` will be key-value objects, with the keys
   being the fieldnames and the values being arrays of values (for fields) or file descriptor objects (for files).
 * The file descriptor objects are those used by `multiparty`.
+* Don't forget to cleanup by running `cleanup(req)`. Your route handler doesn't have to wait
+  for its completion.
 
 ```javascript
 const multiparty = require('multiparty-express');

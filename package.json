@@ -1,9 +1,9 @@
 {
   "name": "multiparty-express",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "An express middleware for multiparty, with TypeScript typings.",
   "main": "dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "typings": "dist/src/index.d.ts",
   "files": [
     "dist/src/"
   ],
